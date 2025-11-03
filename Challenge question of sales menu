@@ -2,67 +2,41 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class challenge {
     public static void main(String[] args) {
         try {
-
             File file1 = new File("C:\\Users\\Lab User\\Desktop\\sales.txt");
-
             Scanner sc1 = new Scanner(file1);
-
             HashMap<String, Integer> dayArr = new HashMap<>();
-
             String line = sc1.nextLine();
-
             String[] menu = line.split("\t");
-
             System.out.println("Choose option from which you want to calculate sale");
-
             for (int i = 0; i < menu.length; i++) {
                 System.out.println(i + " " + menu[i]);
             }
-
             Scanner sc = new Scanner(System.in);
             int userinp = sc.nextInt();
-
-           while (userinp < 0 || userinp >= menu.length) {
+         while (userinp < 0 || userinp >= menu.length) {
                 System.out.println("choose correct option");
-
                 userinp = sc.nextInt();
-
             }
-
-
-
             while (sc1.hasNext()) {
                 line = sc1.nextLine();
-
                 String[] arr = line.split("\t");
-
                 String choosed;
-
-
                     choosed = arr[userinp - 1];
-
-
                 if (!dayArr.containsKey(choosed)) {
                     dayArr.put(choosed, 0);
                 }
-
                 int sumOfL = Integer.parseInt(arr[4]) * Integer.parseInt(arr[5]);
-
                 dayArr.put(choosed, (dayArr.get(choosed) + sumOfL));
-
             }
-
             System.out.println("Result : \n");
-
             for (String pr : dayArr.keySet()) {
                 System.out.println(pr + " : " + dayArr.get(pr));
             }
-
         } catch (Exception e) {
-
         }
     }
 }
