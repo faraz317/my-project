@@ -25,7 +25,7 @@ public class challenge {
             Scanner sc = new Scanner(System.in);
             int userinp = sc.nextInt();
 
-            while (userinp > 0 && userinp <= 4) {
+           while (userinp < 0 || userinp >= menu.length) {
                 System.out.println("choose correct option");
 
                 userinp = sc.nextInt();
