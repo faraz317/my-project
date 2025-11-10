@@ -1,0 +1,36 @@
+public class URLValidator {
+    public static boolean isValidURL(String url) {
+        if (!(url.startsWith("http://") || url.startsWith("https://") || url.startsWith("www."))) {
+            return false;
+        }
+        String remaining;
+        if (url.startsWith("http://")) {
+            remaining = url.substring(7);
+        } else if (url.startsWith("https://")) {
+            remaining = url.substring(8);
+        } else {
+            remaining = url.substring(4);
+        }
+        String[] parts = remaining.split("\\.");
+        if (parts.length < 2) {
+            return false;
+        }
+        for (String part : parts) {
+            if (part.length() <= 2) {
+                return false;
+            }
+            if (!part.matches("[a-zA-Z0-9]+")) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        System.out.println(isValidURL("http://example.com"));
+        System.out.println(isValidURL("https://www.google123.net"));
+        System.out.println(isValidURL("www.abc12.org"));
+        System.out.println(isValidURL("ftp://wrongstart.com"));
+        System.out.println(isValidURL("https://xy.z"));
+        System.out.println(isValidURL("www.bad_domain!.com"));
+    }
+}
