@@ -1,0 +1,20 @@
+public class BitPattern {
+    public static void main(String[] args) {
+        int APP = 100;
+        String bp = "";
+        int m = 1;
+        for (int i = 0; i < 32; i++) {
+            int Y = APP & m;
+
+            if (Y == 0) {
+                System.out.println("0");
+                bp = "0" + bp;
+            } else {
+                System.out.println("1");
+                bp = "1" + bp;
+            }
+        m = m << 1;
+        }
+        System.out.println("Binary = " + bp);
+    }
+}
